@@ -47,7 +47,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        if(Auth::user()->isSuperAdmin() || Auth::user()->can('GetPosts'))
+        if(Auth::user()->isSuperAdmin() || Auth::user()->can('CreatePost'))
         {
             $request->validate([
                 '_title' => 'required',
@@ -105,7 +105,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::user()->isSuperAdmin() || Auth::user()->can('GetPosts'))
+        if(Auth::user()->isSuperAdmin() || Auth::user()->can('UpdatePost'))
         {
            $post = Post::find($id);
            if($post)
@@ -136,7 +136,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        if(Auth::user()->isSuperAdmin() || Auth::user()->can('GetPost'))
+        if(Auth::user()->isSuperAdmin() || Auth::user()->can('DeletePost'))
         {
             $post = Post::find($id);
             if($post)
